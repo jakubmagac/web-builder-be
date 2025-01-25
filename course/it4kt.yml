@@ -1,0 +1,30 @@
+# Course configuration
+# https://pages.kpi.fei.tuke.sk/it4kt/it4kt-builder/configuration/
+
+course:
+  title: Názov predmetu
+
+translations:
+  languages: [sk]
+  fallback: sk
+
+folders:
+  - path: lectures
+    title: Prednášky
+  - path: labs
+    title: Cvičenia
+    type: scenario
+  - path: assignments
+    title: Zadania
+  - path: slides
+    type: shower_slides
+
+links:
+  - title: KPI
+    url: https://kpi.fei.tuke.sk/
+
+theme:
+  name: light
+
+deploy:
+  code: example  # Skrátka kurzu pre nahranie na server itk4t.cnl.sk
