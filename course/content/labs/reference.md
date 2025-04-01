@@ -26,6 +26,15 @@ Krok môže mať nepovinný nádpis.
 
 > Úloha:
 > Element task opisuje práve jednu úlohu, ktorú majú študenti vyriešiť.
+> Element task opisuje práve druhu úlohu, ktorú majú študenti vyriešiť.
+
+> Solution*:
+> ### fix this  
+
+
+> Result*:
+> # fix this
+
 
 > Poznámka:
 > Element comment obsahuje doplňujúci komentár ku riešenému kroku alebo úlohe.
@@ -40,6 +49,12 @@ print('Hello World!')
 > Vyučujúci:
 > Text viditeľný iba pre vyučujúceho.
 
+> Example:
+> je špeciálny typ komentára.
+
+> Wrong example: Tot
+> je špeciálny typ komentára.
+
 ![Popis obrázka](images/example-image.svg)
 
 hlavička | tabuľky
@@ -51,11 +66,7 @@ druhý    | riadok
 
 1. Opis zdroja, ktorý študenti používajú pri štúdiu modulu.
 
-## Doplňujúce úlohy
-
-> Úloha:
-> Doplňujúca úloha.
-
 ## Doplňujúce zdroje
 
-1. Doplňujúci zdroj.
+- Opis zdroja, ktorý študenti používajú pri štúdiu modulu.
+
