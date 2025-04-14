@@ -1,0 +1,23 @@
+/* Styles */
+
+@import 'https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Mono&display=swap';
+@import 'shower/shower.css';
+@import 'blocks/badge.css';
+@import 'blocks/caption.css';
+@import 'blocks/progress.css';
+@import 'blocks/region.css';
+@import 'slide/slide.css';
+
+.title {
+    background-color: var(--color-blue);
+    color: #fff;
+}
+
+.title h2 {
+    color: #fff;
+    font-size: 100px;
+}
+
+.slide pre code.hljs {
+    padding: 0 0 0 var(--slide-side);
+}

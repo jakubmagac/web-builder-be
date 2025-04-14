@@ -1,0 +1,30 @@
+.solution--hideable .solution__header {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    padding-right: 40px;
+}
+
+.solution--hideable .solution__header:after {
+    content: "+";
+    font-size: 34px;
+    line-height: 1rem;
+    position: absolute;
+    right: -5px;
+    top: 0;
+}
+
+.solution--hideable .solution__content {
+    cursor: auto;
+}
+
+.solution--hideable.visible .solution__header:after {
+    content: "−";
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.solution--hideable .solution__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}

@@ -31,7 +31,6 @@ Krok môže mať nepovinný nádpis.
 > Solution*:
 > ### fix this  
 
-
 > Result*:
 > # fix this
 
@@ -46,8 +45,11 @@ Krok môže mať nepovinný nádpis.
 print('Hello World!')
 ```
 
+[Opis zdroja, ktorý študenti používajú pri štúdiu modulu.](/guides/content)
+
 > Vyučujúci:
-> Text viditeľný iba pre vyučujúceho.
+> > Example:
+> > je špeciálny typ komentára.
 
 > Example:
 > je špeciálny typ komentára.
@@ -63,10 +65,11 @@ prvý     | riadok
 druhý    | riadok
 
 ## Zdroje
+1. [Opis zdroja, ktorý študenti používajú pri štúdiu modulu.](/guides/content)
 
-1. Opis zdroja, ktorý študenti používajú pri štúdiu modulu.
+## Doplňujúce úlohy
+> Úloha:
+> Vypracujte cvičenie
 
 ## Doplňujúce zdroje
-
-- Opis zdroja, ktorý študenti používajú pri štúdiu modulu.
-
+* Opis zdroja, ktorý študenti používajú pri štúdiu modulu.

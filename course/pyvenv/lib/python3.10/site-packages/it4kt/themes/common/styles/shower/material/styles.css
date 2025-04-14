@@ -1,0 +1,24 @@
+/* Styles */
+
+@import 'https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap';
+@import 'shower/shower.css';
+@import 'blocks/badge.css';
+@import 'blocks/caption.css';
+@import 'blocks/progress.css';
+@import 'blocks/region.css';
+@import 'slide/slide.css';
+
+.title {
+    background-color: var(--color-key);
+    color: #fff;
+}
+
+.title h2 {
+    color: #fff;
+    font-size: 72px;
+    font-weight: bold;
+}
+
+.slide pre code.hljs {
+    padding: 0 0 0 var(--slide-left-side);
+}

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <title>Príklad použitia elementov scenára — Názov predmetu</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="../styles/light.css">
+    <meta name="it4kt-course-root" content=".." />
+
+
+
+
+
+
+
+
+<!-- MathJax -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    tags: 'ams'
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js">
+</script>
+
+<!-- highlight.js -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//styles/atom-one-light.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//highlight.min.js"></script>
+
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//languages/haskell.min.js"></script>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//languages/kotlin.min.js"></script>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//languages/java.min.js"></script>
+
+
+
+<!-- Objectives badges -->
+<link rel="stylesheet" href="../styles/tippy-light-border.css">
+<link rel="stylesheet" href="../styles/collapsible.css">
+<script defer src="../styles/tippy.all.min.js"></script>
+<script defer src="../styles/objectives.js"></script>
+<script defer src="../styles/collapsible.js"></script>
+<script>
+  it4ktTranslations = {
+    step: "krok",
+    steps: "kroky",
+    objectives: "ciele",
+    objective: "cieľ"
+}
+</script>
+
+<!-- Language picker -->
+<script defer src="../styles/language-picker.js"></script>
+
+<!-- Common initialization code -->
+<script defer src="../styles/common.js"></script>
+
+    <script defer src="../styles/light.js"></script>
+    <script defer src="../styles/medium-zoom.min.js"></script>
+  </head>
+  <body>
+    <div id="page" class="page">
+      <header class="page__header header">
+        <div class="course-title header__title">
+          <a class="course-title__link" href="..">Názov predmetu</a>
+        </div>
+
+        <a id="menu-toggle" class="page__toggle header__menu-button menu-button" href="#course-menu">
+          <svg class="icon icon--large">
+            <use xlink:href="../styles/feather-sprite.svg#menu"/>
+          </svg>
+        </a>
+
+        <div class="actions header__actions page__menu">
+          <span class="overviews">
+            <a class="actions__link actions__link--icon"
+               href="../overview.html"
+               title="Prehľad predmetu">
+              <svg class="icon">
+                <use xlink:href="../styles/feather-sprite.svg#calendar"/>
+              </svg>
+            </a>
+            <a class="actions__link actions__link--icon"
+               href="../objectives_overview.html"
+               title="Zoznam všetkých cieľov">
+              <svg class="icon icon">
+                <use xlink:href="../styles/feather-sprite.svg#check-circle"/>
+              </svg>
+            </a>
+          </span>
+          
+        </div>
+
+
+      </header>
+      <nav id="course-menu" class="page__sidebar page__menu">
+        
+
+<ul class="menu">
+  
+    <li>
+      
+        <div class="menu__subtitle">Prednášky</div>
+        <ul class="menu__submenu">
+          
+            <li>
+              
+  
+    <a class="menu__item menu__link" href="../lectures/01.html"
+      >
+  
+    
+      <span class="menu__week" title="1. týždeň">1</span>
+    
+    <span class="menu__label">Úvod
+      
+    </span>
+  
+    </a>
+  
+
+            </li>
+          
+        </ul>
+      
+    </li>
+  
+    <li>
+      
+        <div class="menu__subtitle">Cvičenia</div>
+        <ul class="menu__submenu">
+          
+            <li>
+              
+  
+    <a class="menu__item menu__link" href="01.html"
+      >
+  
+    
+      <span class="menu__week" title="1. týždeň">1</span>
+    
+    <span class="menu__label">Prvé cvičenie
+      
+    </span>
+  
+    </a>
+  
+
+            </li>
+          
+            <li>
+              
+  
+    <a class="menu__item menu__link is-active" href="reference.html"
+      >
+  
+    
+      <span class="menu__week" title="2. týždeň">2</span>
+    
+    <span class="menu__label">Príklad použitia elementov scenára
+      
+    </span>
+  
+    </a>
+  
+
+            </li>
+          
+            <li>
+              
+  
+    <a class="menu__item menu__link" href="justTesting.html"
+      >
+  
+    
+    <span class="menu__label">None
+      
+    </span>
+  
+    </a>
+  
+
+            </li>
+          
+        </ul>
+      
+    </li>
+  
+    <li>
+      
+        <div class="menu__subtitle">Zadania</div>
+        <ul class="menu__submenu">
+          
+            <li>
+              
+  
+    <a class="menu__item menu__link" href="../assignments/01.html"
+      >
+  
+    
+      <span class="menu__week" title="1. týždeň">1</span>
+    
+    <span class="menu__label">Prvé zadanie
+      
+    </span>
+  
+    </a>
+  
+
+            </li>
+          
+            <li>
+              
+  
+    <a class="menu__item menu__link" href="../assignments/02.html"
+      >
+  
+    
+      <span class="menu__week" title="2. týždeň">2</span>
+    
+    <span class="menu__label">Druhe zadanie
+      
+    </span>
+  
+    </a>
+  
+
+            </li>
+          
+        </ul>
+      
+    </li>
+  
+    <li>
+      
+        
+  
+    <a class="menu__item menu__link" href="https://kpi.fei.tuke.sk/"
+      target="_blank">
+  
+    
+    <span class="menu__label">KPI
+      
+        <svg class="icon icon--inline"><use xlink:href="../styles/feather-sprite.svg#external-link"/></svg>
+      
+    </span>
+  
+    </a>
+  
+
+      
+    </li>
+  
+</ul>
+      </nav>
+      <main class="page__content content">
+        
+          <h1 class="scenario-title">
+            
+    Príklad použitia elementov scenára
+
+          </h1>
+        
+        
+    <div class="page-contents">
+            
+<section class="section section--objectives">
+            <h2 class="section__header">Ciele</h2>
+            <ol class="objectives">
+            <li class="objective" id="objective-elements">Ukazať použitie elementov scenára</li><li class="objective" id="objective-themes">Dokumentovať generované HTML pre autorov tém</li><li class="objective" id="objective-test">Automaticky testovať správnosť generovaného HTML</li>
+        </ol>
+        </section>
+<section class="section section--introduction">
+            <h2 class="section__header">Úvod</h2>
+            <p>Stručný úvod do problematiky preberanej na cvičení, motivácia.</p>
+        </section>
+<section class="section section--instructions">
+            <h2 class="section__header">Postup</h2>
+            <section class="step" data-objectives="objective-elements" id="step-1"><h3 class="step__header step__header--without-title"><span class="step__keyword">Krok </span><span class="step__number">1</span></h3><p>Postup cvičenia je rozdelený na kroky.</p></section>
+<section class="step" data-objectives="objective-elements objective-themes" id="step-2"><h3 class="step__header step__header--with-title"><span class="step__keyword">Krok </span><span class="step__number">2</span><span class="step__colon">: </span><span class="step__title">Nadpis kroku</span></h3><p>Krok môže mať nepovinný nádpis.</p></section>
+<section class="step" data-objectives="objective-elements objective-themes objective-test" id="step-3"><h3 class="step__header step__header--with-title"><span class="step__keyword">Krok </span><span class="step__number">3</span><span class="step__colon">: </span><span class="step__title">Príklady špeciálnych blokov použiteľných v krokoch</span></h3><div class="task">
+            <h4 class="task__header">Úloha <span class="task__number">3.1</span></h4>
+            <div class="task__content"><p>Element task opisuje práve jednu úlohu, ktorú majú študenti vyriešiť.
+Element task opisuje práve druhu úlohu, ktorú majú študenti vyriešiť.</p></div>
+        </div><div class="solution solution--hideable">
+            <h4 class="solution__header">Riešenie</h4>
+            <div class="solution__content"><h3>fix this</h3></div>
+        </div><div class="solution solution--hideable">
+            <h4 class="solution__header">Výsledok</h4>
+            <div class="solution__content"><h1>fix this</h1></div>
+        </div><div class="admonition admonition--note">
+            <h4 class="admonition__header">Poznámka</h4>
+            <div class="admonition__content"><p>Element comment obsahuje doplňujúci komentár ku riešenému kroku alebo úlohe.</p></div>
+            
+        </div><div class="admonition admonition--warning">
+            <h4 class="admonition__header">Upozornenie</h4>
+            <div class="admonition__content"><p>Upozornenie je špeciálny typ komentára.</p></div>
+            
+        </div><pre class="code"><code class="language-python">print('Hello World!')
+</code></pre><p><a href="../guides/content">Opis zdroja, ktorý študenti používajú pri štúdiu modulu.</a></p><div class="example">
+                <h4 class="example__header">Príklad</h4>
+                <div class="example__content"><p>je špeciálny typ komentára.</p></div>
+            </div><div class="example example--wrong">
+                <h4 class="example__header">Nesprávny príklad:
+                  <span class="example__title">Tot</span></h4>
+                <div class="example__content"><p>je špeciálny typ komentára.</p></div>
+            </div><p><figure class="figure">
+            <img src="images/example-image.svg" alt="Popis obrázka">
+            <figcaption><span class="figure__number">Obr. 1:</span> <span class="figure__caption">Popis obrázka</span></figcaption>
+        </figure></p><div class="table"><table class="table__table">
+<thead>
+<tr>
+<th align="left">hlavička</th>
+<th align="left">tabuľky</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">prvý</td>
+<td align="left">riadok</td>
+</tr>
+<tr>
+<td align="left">druhý</td>
+<td align="left">riadok</td>
+</tr>
+</tbody>
+</table></div></section>
+        </section>
+<section class="section section--resources">
+            <h2 class="section__header">Zdroje</h2>
+            <ol>
+<li><a href="../guides/content">Opis zdroja, ktorý študenti používajú pri štúdiu modulu.</a></li>
+</ol>
+        </section>
+<section class="section section--additional-tasks_block">
+            <h2 class="section__header">Doplňujúce úlohy</h2>
+            <div class="task">
+            <h4 class="task__header">Úloha <span class="task__number">A.1</span></h4>
+            <div class="task__content"><p>Vypracujte cvičenie</p></div>
+        </div>
+        </section>
+<section class="section section--additional-resources">
+            <h2 class="section__header">Doplňujúce zdroje</h2>
+            <ul>
+<li>Opis zdroja, ktorý študenti používajú pri štúdiu modulu.</li>
+</ul>
+        </section>
+
+        </div>
+
+      </main>
+      <div class="page__footer footer">
+        © Copyright 2025
+        <a href="https://www.kpi.fei.tuke.sk/">KPI FEI TUKE</a>
+        Some text
+      </div>
+    </div>
+  </body>
+</html>

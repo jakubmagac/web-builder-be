@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <title>Názov prezentácie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../styles/shower/material/styles.css">
+  <style>
+    .shower {
+        --slide-ratio: calc(16/10);
+    }
+  </style>
+  <script src="../styles/shower/shower.js" defer></script>
+  <meta name="it4kt-course-root" content=".." />
+
+
+
+
+
+
+
+
+<!-- MathJax -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    tags: 'ams'
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js">
+</script>
+
+<!-- highlight.js -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//styles/atom-one-light.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//highlight.min.js"></script>
+
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//languages/haskell.min.js"></script>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//languages/kotlin.min.js"></script>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0//languages/java.min.js"></script>
+
+
+
+<!-- Objectives badges -->
+<link rel="stylesheet" href="../styles/tippy-light-border.css">
+<link rel="stylesheet" href="../styles/collapsible.css">
+<script defer src="../styles/tippy.all.min.js"></script>
+<script defer src="../styles/objectives.js"></script>
+<script defer src="../styles/collapsible.js"></script>
+<script>
+  it4ktTranslations = {
+    step: "krok",
+    steps: "kroky",
+    objectives: "ciele",
+    objective: "cieľ"
+}
+</script>
+
+<!-- Language picker -->
+<script defer src="../styles/language-picker.js"></script>
+
+<!-- Common initialization code -->
+<script defer src="../styles/common.js"></script>
+</head>
+<body class="shower list">
+  <header class="caption">
+    <h1><a href="..">CN</a> / Názov prezentácie</h1>
+    <p>Príklad</p>
+  </header>
+
+  <section class="slide clear title"><h2>Nadpis prezentácie</h2><p>Nejaký popis</p></section>
+<section class="slide"><h2>Nadpis snímku</h2><p>a jeho obsah</p></section>
+<section class="slide"><h2>Snímok s odrážkami</h2><ul>
+<li>raz</li>
+<li>dva</li>
+<li>tri</li>
+</ul></section>
+<section class="slide"><p>Snímok bez nadpisu</p></section>
+<section class="slide"><h2>Kód</h2><pre><code class="language-python">print('Hello, world!')
+</code></pre></section>
+<section class="slide"><h2 class="shout">Kričiací snímok</h2></section>
+<section class="slide black">
+  <h2 style="color: white">Čisté HTML!</h2>
+</section>
+<section class="slide"><h2>Dva stlpce</h2><div class="columns two"><p>Markdown a HTML je možné kombinovať</p><p>Stačí vynechať medzi nimi riadok.</p></div></section>
+
+
+  <div class="progress"></div>
+</body>
+</html>

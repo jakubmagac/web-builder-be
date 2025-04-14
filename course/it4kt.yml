@@ -1,13 +1,10 @@
-# Course configuration
-# https://pages.kpi.fei.tuke.sk/it4kt/it4kt-builder/configuration/
-
 course:
   title: Názov predmetu
-
+  acronym: CN
 translations:
-  languages: [sk]
+  languages:
+    - sk
   fallback: sk
-
 folders:
   - path: lectures
     title: Prednášky
@@ -18,13 +15,22 @@ folders:
     title: Zadania
   - path: slides
     type: shower_slides
-
 links:
   - title: KPI
     url: https://kpi.fei.tuke.sk/
-
+published-weeks: 5
 theme:
   name: light
-
+  footnote: Some text
+highlighting:
+  extra-languages:
+    - haskell
+    - kotlin
+    - java
 deploy:
-  code: example  # Skrátka kurzu pre nahranie na server itk4t.cnl.sk
+  service: http://it4kt.cnl.sk/uploads/
+  code: example-course
+  lecturer-credentials: login:password
+analytics-code: >-
+  <script defer data-domain="xyz.kurzy.kpi.fei.tuke.sk"
+  src="https://plausible.kpi.fei.tuke.sk/js/script.js"></script>

@@ -1,0 +1,34 @@
+@import 'https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Fira+Sans:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap';
+@import '../material/shower/shower.css';
+@import '../material/blocks/badge.css';
+@import '../material/blocks/caption.css';
+@import '../material/blocks/progress.css';
+@import '../material/blocks/region.css';
+@import '../material/slide/slide.css';
+
+.shower {
+    --color-key: #2196F3;
+    font-family: Fira Sans, Roboto, sans-serif;
+}
+
+.slide code,
+.slide kbd,
+.slide samp {
+    font-family: Fira Mono, Roboto Mono, monospace;
+}
+
+.slide.title {
+    color: #fff;
+    background-color: var(--color-key);
+}
+
+.slide.title h2 {
+    color: #fff;
+    font-size: 72px;
+    font-weight: bold;
+}
+
+.slide pre code.hljs {
+    padding: 0 0 0 var(--slide-left-side);
+}
+

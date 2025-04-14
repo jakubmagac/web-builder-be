@@ -1,0 +1,33 @@
+@import "../fira/styles.css";
+
+.shower {
+    --color-key: #03A9F4;
+    --diagonal: linear-gradient(
+        130deg, rgba(0, 0, 0, 0.1) 50%,
+        var(--color-key) 50%
+    );
+}
+
+.slide .shout::after {
+    right: -100%;
+    left: -100%;
+}
+
+.slide.title {
+    background-image: url("kpi-logo-corner.svg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+.slide.title h2::after {
+    position: absolute;
+    top: -150%;
+    right: 50%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-image: var(--diagonal);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    content: '';
+}
