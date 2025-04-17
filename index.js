@@ -2,9 +2,12 @@ const express = require('express')
 const app = express()
 const port = 3000
 const path = require('path');
-const fs = require('fs').promises;
+const fsp = require('fs').promises;
+const fs = require('fs');
 const cors = require('cors');
 const multer = require("multer");
+app.use(express.json());
+const BASE_DIR = path.join(__dirname, 'course/content')
 
 const storage = multer.diskStorage({
   destination: async function (req, file, cb) {
@@ -12,7 +15,7 @@ const storage = multer.diskStorage({
     const folderPath = path.join(__dirname, "course", "content", folder || '', "images");
 
     try {
-      await fs.mkdir(folderPath, { recursive: true });
+      await fsp.mkdir(folderPath, { recursive: true });
       cb(null, folderPath);
     } catch (err) {
       cb(err);
@@ -61,11 +64,11 @@ app.get('/files', async (req, res) => {
     let filesAndFolders = [];
 
     try {
-      const items = await fs.readdir(folderPath);
+      const items = await fsp.readdir(folderPath);
 
       for (const item of items) {
         const itemPath = path.join(folderPath, item);
-        const stats = await fs.lstat(itemPath);
+        const stats = await fsp.lstat(itemPath);
         const relativePath = path.relative(basePath, itemPath);
 
         if(item !== 'images') {
@@ -102,10 +105,13 @@ app.get('/files', async (req, res) => {
 
 app.get('/file', async (req, res) => {
   const relativePath = req.query.folderPath; 
-  const filePath = path.join(__dirname, relativePath);
+  const root = req.query.root === 'root';
+  const filePath = path.join(root ? BASE_DIR : __dirname, relativePath);
+
+  console.log(filePath);
 
   try {
-    const fileContent = await fs.readFile(filePath, 'utf-8');
+    const fileContent = await fsp.readFile(filePath, 'utf-8');
     res.send(fileContent);
   } catch (err) {
     res.status(500).json({ error: 'Unable to read file' });
@@ -121,7 +127,7 @@ app.delete('/file', async (req, res) => {
   const filePath = path.join(__dirname, relativePath);
 
   try {
-    await fs.unlink(filePath);
+    await fsp.unlink(filePath);
     res.json({ message: 'File deleted successfully' });
   } catch (err) {
     if (err.code === 'ENOENT') {
@@ -143,7 +149,7 @@ app.put('/file', async (req, res) => {
   const newFilePath = path.join(path.dirname(oldFilePath), fileName + '.md');
 
   try {
-    await fs.rename(oldFilePath, newFilePath);
+    await fsp.rename(oldFilePath, newFilePath);
     res.json({ message: 'File renamed successfully' });
   } catch (err) {
     if (err.code === 'ENOENT') {
@@ -156,20 +162,58 @@ app.put('/file', async (req, res) => {
 
 app.post('/file', async (req, res) => {
   const relativePath = req.query.filePath;
+  const root = req.query.root === 'true';
+  const fileContent = req.body.content || '\n'; 
 
   if (!relativePath) {
-    return res.status(400).json({ error: 'Missing folderPath query parameter' });
+    return res.status(400).json({ error: 'Missing filePath query parameter' });
   }
 
-  const filePath = path.join(__dirname, relativePath);
+  const filePath = path.join(root ? BASE_DIR : __dirname, relativePath);
 
   try {
-    await fs.writeFile(filePath, '\n');
+    if (fs.existsSync(filePath)) {
+      return res.status(400).json({ error: 'File already exists' });
+    }
+
+    await fsp.writeFile(filePath, fileContent);
     res.json({ message: 'File created successfully' });
   } catch (err) {
+    console.error('Error creating file:', err);
     res.status(500).json({ error: 'Unable to create file' });
   }
 });
+
+app.get('/config', async (req, res) => {
+  try {
+    const fileContent = await fsp.readFile('./course/it4kt.yml', 'utf-8');
+    const data = yaml.load(fileContent);
+
+    res.json({ config: data }); // Odporúča sa používať .json() namiesto .send() s objektom
+  } catch (error) {
+    console.error('Chyba pri čítaní YAML:', error);
+    res.status(500).json({ error: 'Nepodarilo sa načítať konfiguráciu' });
+  }
+})
+  
+app.post('/config', async (req, res) => {
+  try {
+    const newConfig = req.body.config; // Assuming the new config is sent in the 'config' field of the request body
+
+    if (!newConfig || typeof newConfig !== 'object') {
+      return res.status(400).json({ error: 'Neplatný formát konfigurácie v tele požiadavky' });
+    }
+
+    const yamlStr = yaml.dump(newConfig); // Convert the JavaScript object back to YAML
+
+    await fsp.writeFile('./course/it4kt.yml', yamlStr, 'utf-8');
+
+    res.json({ message: 'Konfigurácia úspešne aktualizovaná' });
+  } catch (error) {
+    console.error('Chyba pri zápise YAML:', error);
+    res.status(500).json({ error: 'Nepodarilo sa uložiť konfiguráciu' });
+  }
+});  
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
