@@ -171,7 +171,7 @@ app.post('/file', async (req, res) => {
   const filePath = path.join(root ? BASE_DIR : __dirname, relativePath);
 
   try {
-    if (fs.existsSync(filePath)) {
+    if (fs.existsSync(filePath) && fileContent === '\n') {
       return res.status(400).json({ error: 'File already exists' });
     }
 
@@ -213,6 +213,72 @@ app.post('/config', async (req, res) => {
     res.status(500).json({ error: 'Nepodarilo sa uložiť konfiguráciu' });
   }
 });  
+
+
+app.delete('/folder', async (req, res) => {
+  const relativePath = req.query.name; 
+  if (!relativePath) {
+    return res.status(400).json({ error: 'Missing folderPath query parameter' });
+  }
+
+  const folderPath = path.join(__dirname, relativePath);
+  console.log(folderPath)
+
+  try {
+    fsp.rm(folderPath, { recursive: true, force: true })
+    res.json({ message: 'Folder deleted successfully' });
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      res.status(404).json({ error: 'Folder not found' });
+    } else {
+      res.status(500).json({ error: 'Unable to delete file' });
+    }
+  }
+});
+
+app.put('/folder', async (req, res) => {
+  const { folderPath, name } = req.query;
+
+  if (!folderPath || !name) {
+    return res.status(400).json({ error: 'Missing filePath or fileName query parameter' });
+  }
+
+  const oldFilePath = path.join(__dirname, folderPath);
+  const newFilePath = path.join(path.dirname(oldFilePath), name);
+
+  try {
+    await fsp.rename(oldFilePath, newFilePath);
+    res.json({ message: 'Folder renamed successfully' });
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      res.status(404).json({ error: 'Folder not found' });
+    } else {
+      res.status(500).json({ error: 'Unable to rename folder' });
+    }
+  }
+});
+
+app.post('/folder', async (req, res) => {
+  const name = req.query.name;
+
+  if (!name) {
+    return res.status(400).json({ error: 'Missing name query parameter' });
+  }
+
+  const folderPath = path.join(BASE_DIR, name);
+
+  try {
+    if (fs.existsSync(folderPath)) {
+      return res.status(400).json({ error: 'Folder already exists' });
+    }
+
+    await fsp.mkdir(folderPath, { recursive: true }); // creates the folder
+    res.json({ message: 'Folder created successfully' });
+  } catch (err) {
+    console.error('Error creating folder:', err);
+    res.status(500).json({ error: 'Unable to create folder' });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
