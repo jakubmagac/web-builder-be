@@ -8,6 +8,7 @@ const cors = require('cors');
 const multer = require("multer");
 app.use(express.json());
 const BASE_DIR = path.join(__dirname, 'course/content')
+const yaml = require('js-yaml')
 
 const storage = multer.diskStorage({
   destination: async function (req, file, cb) {
@@ -105,10 +106,8 @@ app.get('/files', async (req, res) => {
 
 app.get('/file', async (req, res) => {
   const relativePath = req.query.folderPath; 
-  const root = req.query.root === 'root';
+  const root = req.query.root === 'true';
   const filePath = path.join(root ? BASE_DIR : __dirname, relativePath);
-
-  console.log(filePath);
 
   try {
     const fileContent = await fsp.readFile(filePath, 'utf-8');
