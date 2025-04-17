@@ -222,7 +222,6 @@ app.delete('/folder', async (req, res) => {
   }
 
   const folderPath = path.join(__dirname, relativePath);
-  console.log(folderPath)
 
   try {
     fsp.rm(folderPath, { recursive: true, force: true })
