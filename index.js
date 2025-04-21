@@ -234,13 +234,12 @@ app.get('/config', async (req, res) => {
   
 app.post('/config', async (req, res) => {
   try {
-    const newConfig = req.body.config; // Assuming the new config is sent in the 'config' field of the request body
-
+    const newConfig = req.body.config; 
     if (!newConfig || typeof newConfig !== 'object') {
       return res.status(400).json({ error: 'Neplatný formát konfigurácie v tele požiadavky' });
     }
 
-    const yamlStr = yaml.dump(newConfig); // Convert the JavaScript object back to YAML
+    const yamlStr = yaml.dump(newConfig);
 
     await fsp.writeFile('./course/it4kt.yml', yamlStr, 'utf-8');
 
@@ -308,7 +307,7 @@ app.post('/folder', async (req, res) => {
       return res.status(400).json({ error: 'Folder already exists' });
     }
 
-    await fsp.mkdir(folderPath, { recursive: true }); // creates the folder
+    await fsp.mkdir(folderPath, { recursive: true });
     res.json({ message: 'Folder created successfully' });
   } catch (err) {
     console.error('Error creating folder:', err);
