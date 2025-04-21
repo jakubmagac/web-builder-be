@@ -51,7 +51,6 @@ app.post("/upload", upload.any(), (req, res) => {
   }
 
   const folder = req.query.path; 
-
   const file = req.files[0];
 
   const imageUrl = `${req.protocol}://${req.get("host")}/course/content${folder ? '/' + folder : ''}/images/${file.filename}`;
@@ -105,15 +104,53 @@ app.get('/files', async (req, res) => {
 });
 
 app.get('/file', async (req, res) => {
-  const relativePath = req.query.folderPath; 
+  const relativePath = req.query.filePath; 
   const root = req.query.root === 'true';
-  const filePath = path.join(root ? BASE_DIR : __dirname, relativePath);
+  const fullPath = path.join(root ? BASE_DIR : __dirname, relativePath);
 
   try {
-    const fileContent = await fsp.readFile(filePath, 'utf-8');
+    const fileContent = await fsp.readFile(fullPath, 'utf-8');
     res.send(fileContent);
   } catch (err) {
     res.status(500).json({ error: 'Unable to read file' });
+  }
+});
+
+app.get('/resources', async (req, res) => {
+  const relativePath = req.query.filePath.substring(0, req.query.filePath.lastIndexOf('/')); 
+  const root = req.query.root === 'true';
+  const fullPath = path.join(root ? BASE_DIR : __dirname, relativePath, "/images");
+
+  console.log(fullPath)
+  try {
+    await fsp.access(fullPath);
+    const files = await fsp.readdir(fullPath);
+    res.json(files); 
+  } catch (err) {
+    res.json([]);
+  }
+});
+
+app.delete('/resources', async (req, res) => {
+  const relativePath = req.query.filePath.substring(0, req.query.filePath.lastIndexOf('/'));
+  const allowedFiles = req.body.allowedFiles || []; 
+  const dirPath = path.join(__dirname, relativePath, 'images');
+
+  try {
+    await fsp.access(dirPath);
+
+    const allFiles = await fsp.readdir(dirPath);
+
+    const filesToDelete = allFiles.filter(file => !allowedFiles.includes(file));
+
+    await Promise.all(
+      filesToDelete.map(file => fsp.unlink(path.join(dirPath, file)))
+    );
+
+    res.json({ deleted: filesToDelete });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to delete files' });
   }
 });
 
@@ -188,7 +225,7 @@ app.get('/config', async (req, res) => {
     const fileContent = await fsp.readFile('./course/it4kt.yml', 'utf-8');
     const data = yaml.load(fileContent);
 
-    res.json({ config: data }); // Odporúča sa používať .json() namiesto .send() s objektom
+    res.json({ config: data });
   } catch (error) {
     console.error('Chyba pri čítaní YAML:', error);
     res.status(500).json({ error: 'Nepodarilo sa načítať konfiguráciu' });
